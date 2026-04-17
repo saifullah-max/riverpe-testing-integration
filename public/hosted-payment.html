@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hosted Payment Tester</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>Hosted Payment Tester</h1>
+        <p>Validate hosted payment page, PSP QR iframe behavior, and merchant callback flow.</p>
+        <div id="config"></div>
+      </header>
+
+      <section class="card">
+        <h2>Load Hosted Payment Data</h2>
+        <form id="form-hosted-payment">
+          <label>order_id (optional)
+            <input name="order_id" value="" placeholder="Leave empty to use last created payment order" />
+          </label>
+          <button type="submit">Load Hosted Details</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Links</h2>
+        <p>Open these to compare behavior:</p>
+        <p><a id="hosted-url-link" href="#" target="_blank" rel="noreferrer">Hosted payment URL (merchant dashboard route)</a></p>
+        <p><a id="psp-url-link" href="#" target="_blank" rel="noreferrer">PSP payment URL (native PSP page)</a></p>
+      </section>
+
+      <section class="card">
+        <h2>Result</h2>
+        <pre id="result">Run the hosted payment request...</pre>
+      </section>
+
+      <section class="card">
+        <p><a href="/">Back to endpoint tester</a></p>
+      </section>
+    </main>
+
+    <script src="/hosted-payment.js"></script>
+  </body>
+</html>

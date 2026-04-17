@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Merchant Endpoint Tester</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>Merchant Endpoint Tester</h1>
+        <p>Standalone app to validate each merchant-facing Riverpe endpoint.</p>
+        <div id="config"></div>
+      </header>
+
+      <section class="card">
+        <h2>Hosted Payment Tools</h2>
+        <p>
+          Need to test merchant hosted payment route and compare PSP vs hosted URL behavior?
+          Open the dedicated hosted payment page.
+        </p>
+        <p><a href="/hosted-payment.html">Open Hosted Payment Tester</a></p>
+      </section>
+
+      <section class="card">
+        <h2>Merchant Auth Override</h2>
+        <p>Optional. Leave blank to use backend-managed credentials mode.</p>
+        <form id="form-merchant-auth">
+          <label>clientKeyId <input name="clientKeyId" value="" placeholder="mkey_..." /></label>
+          <label>clientSecret <input name="clientSecret" type="password" value="" placeholder="Enter secret" /></label>
+          <button type="submit">Save Merchant Auth</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>1) Create Payment</h2>
+        <p>For local callback testing, set notifyurl to /notify and callbackurl to /callback (or your public tunnel URL).</p>
+        <form id="form-create-payment">
+          <label>value <input name="value" type="number" value="1200" required /></label>
+          <label>type
+            <select name="method">
+              <option value="gcashwap">gcashwap</option>
+              <option value="GCashWAP">GCashWAP</option>
+              <option value="Maya">Maya</option>
+              <option value="GoTyme">GoTyme</option>
+              <option value="gcashwap-2">gcashwap-2</option>
+            </select>
+          </label>
+          <label>orderid (optional) <input name="orderid" value="" /></label>
+          <label>notifyurl (optional) <input name="notifyurl" value="" placeholder="https://your-domain/notify" /></label>
+          <label>callbackurl (optional) <input name="callbackurl" value="" placeholder="https://your-domain/callback" /></label>
+          <label>ip (optional) <input name="ip" value="" /></label>
+          <label>remark (optional) <input name="remark" value="" /></label>
+          <button type="submit">Test Create Payment</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>2) Get Payment Status</h2>
+        <form id="form-get-payment">
+          <p>Uses last payment order ID from Create Payment response.</p>
+          <button type="submit">Test Payment Status</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>2.1) Payment Inquiry V1 (POST /pay/query)</h2>
+        <form id="form-query-payment-v1">
+          <p>Uses last payment order ID unless order_id is provided.</p>
+          <label>order_id (optional) <input name="order_id" value="" /></label>
+          <button type="submit">Test Payment Query V1</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>3) Create Payout</h2>
+        <form id="form-create-payout">
+          <label>amount <input name="amount" type="number" value="1100" required /></label>
+          <label>method <input name="method" value="BANK_TRANSFER" required /></label>
+          <label>order_no (optional, auto-generated if empty) <input name="order_no" value="" /></label>
+          <label>beneficiary_name <input name="beneficiary_name" value="Juan Dela Cruz" required /></label>
+          <label>beneficiary_account <input name="beneficiary_account" value="09171234567" required /></label>
+          <button type="submit">Test Create Payout</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>4) Get Payout Status</h2>
+        <form id="form-get-payout">
+          <p>Uses last payout order ID from Create Payout response.</p>
+          <button type="submit">Test Payout Status</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>4.1) Payment Inquiry V1 (POST /pay/transfer/query)</h2>
+        <form id="form-query-payout-v1">
+          <p>Uses last payout order ID unless order_no is provided.</p>
+          <label>order_no (optional) <input name="order_no" value="" /></label>
+          <button type="submit">Test Payout Query V1</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>4.2) Payment Inquiry V2 (POST /pay/transfer/query/detail)</h2>
+        <form id="form-query-payout-v2">
+          <p>Uses last payout order ID unless order_no is provided.</p>
+          <label>order_no (optional) <input name="order_no" value="" /></label>
+          <button type="submit">Test Payout Query V2</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>5) Get Payout Voucher</h2>
+        <form id="form-get-voucher">
+          <p>Uses last payout order ID from Create Payout response.</p>
+          <button type="submit">Test Payout Voucher</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>6) Get Merchant Ledger Balance</h2>
+        <form id="form-get-balance">
+          <button type="submit">Test Balance</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Result</h2>
+        <pre id="result">Run an endpoint test...</pre>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

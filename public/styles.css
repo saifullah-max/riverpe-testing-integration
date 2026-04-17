@@ -1,0 +1,82 @@
+:root {
+  --bg: #f4f6fb;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --accent: #0f766e;
+  --border: #d1d5db;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at 20% 0%, #dff7f3, var(--bg));
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  margin-bottom: 16px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+
+h1 { margin: 0 0 8px; }
+h2 { margin: 0 0 10px; font-size: 18px; }
+
+p { color: var(--muted); margin: 0 0 10px; }
+
+form {
+  display: grid;
+  gap: 10px;
+}
+
+label {
+  display: grid;
+  gap: 4px;
+  font-size: 14px;
+}
+
+input, select, button {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+button {
+  width: fit-content;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover { filter: brightness(0.95); }
+
+#result {
+  margin: 0;
+  background: #0b1020;
+  color: #d1fae5;
+  border-radius: 10px;
+  padding: 12px;
+  overflow: auto;
+  max-height: 440px;
+}
+
+#config {
+  font-size: 13px;
+  color: var(--muted);
+}
