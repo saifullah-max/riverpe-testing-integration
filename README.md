@@ -1,5 +1,13 @@
 # Merchant Endpoint Tester
 
+
+
+in .env, add following:
+<!-- deployed url -->
+RIVERPE_BASE_URL
+MERCHANT_API_KEY
+MERCHANT_API_SECRET
+
 A standalone mini app to verify all Riverpe merchant endpoints from a merchant integration perspective.
 
 ## What this tests
@@ -9,6 +17,7 @@ A standalone mini app to verify all Riverpe merchant endpoints from a merchant i
 - POST /merchant/payouts (create payout)
 - GET /merchant/payouts/:order_id (payout query)
 - GET /merchant/payouts/:order_id/voucher (voucher query)
+
 - GET /merchant/balance (merchant ledger balance query)
 - POST /api/test/hosted-payment (tester helper endpoint: hosted URL + payment URL)
 
